@@ -24,7 +24,9 @@ def read_files(path):
                     f = open(file_path, encoding="latin-1")
                     content = f.read().replace('\n', '')
                     f.close()
-                    yield file_path, content
+                    folder_path = os.path.dirname(file_path)
+                    rest_path, folder_name = os.path.split(folder_path)
+                    yield folder_name, content
 
 def build_data_frame(path, classification):
     rows = []
